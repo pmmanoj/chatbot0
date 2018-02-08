@@ -19,15 +19,15 @@ console.log(' Password %s', process.env.MicrosoftAppPassword )
    
     // SETUP Restify Server (local machine) 
     var server = restify.createServer(); 
-        server.listen( process.env.port || process.env.PORT || 3978, 
+        server.listen( process.env.port || process.env.PORT || 9978, 
                        function() { console.log('%s listening to %s', server.name, server.url); }); 
 
     // CONNECTOR to communicate with Bot Framework Service (remote endpoint)
     var connector = new builder.ChatConnector( {
-        appId: process.env.MicrosoftAppId, 
-        appPassword: process.env.MicrosoftAppPassword } );                                                 
-        // appId: null, 
-        // appPassword: null } );                                                 
+        // appId: process.env.MicrosoftAppId, 
+        // appPassword: process.env.MicrosoftAppPassword } );                                                 
+           appId: null, 
+           appPassword: null } );                                                 
 
     // LISTENING at REST endpoint
     server.post( '/api/messages', connector.listen() );
@@ -41,7 +41,7 @@ console.log(' Password %s', process.env.MicrosoftAppPassword )
     // DIALOG by default
        bot.dialog('/', function(session) { 
                        // yypsession.send("SkillAdvisor says ... : %s", session.message.text);
-                       session.send(" Your A.I Helper says ... : %s", session.message.text);
+                       session.send(" DEV-BoT says ... : %s", session.message.text);
        } );
 
        
